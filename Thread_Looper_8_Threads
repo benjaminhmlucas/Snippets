@@ -1,0 +1,80 @@
+package thread_looper;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+/**
+ *
+ * @author lucasb
+ */
+public class Thread_Looper {
+
+private static ExecutorService service1 = null;
+private static ExecutorService service2 = null;
+private static ExecutorService service3 = null;
+private static ExecutorService service4 = null;
+private static ExecutorService service5 = null;
+private static ExecutorService service6 = null;
+private static ExecutorService service7 = null;
+private static ExecutorService service8 = null;
+
+    public static void main(String[] args) {
+        try {
+        service1 = Executors.newSingleThreadExecutor();
+        service2 = Executors.newSingleThreadExecutor();
+        service3 = Executors.newSingleThreadExecutor();
+        service4 = Executors.newSingleThreadExecutor();
+        service5 = Executors.newSingleThreadExecutor();
+        service6 = Executors.newSingleThreadExecutor();
+        service7 = Executors.newSingleThreadExecutor();
+        service8 = Executors.newSingleThreadExecutor();
+        service1.execute(() -> {for(int i = 0;i<10;i++){
+                    System.out.println("Thread 1: " + i);
+                };}
+        );
+        service2.execute(() -> {for(int i = 0;i<10;i++){
+                    System.out.println("Thread 2: " + i);
+                };}
+        );
+        service3.execute(() -> {for(int i = 0;i<10;i++){
+                    System.out.println("Thread 3: " + i);
+                };}
+        );
+        service4.execute(() -> {for(int i = 0;i<10;i++){
+                    System.out.println("Thread 4: " + i);
+                };}
+        );
+        service5.execute(() -> {for(int i = 0;i<10;i++){
+                    System.out.println("Thread 5: " + i);
+                };}
+        );
+        service6.execute(() -> {for(int i = 0;i<10;i++){
+                    System.out.println("Thread 6: " + i);
+                };}
+        );
+        service7.execute(() -> {for(int i = 0;i<10;i++){
+                    System.out.println("Thread 7: " + i);
+                };}
+        );
+        service8.execute(() -> {for(int i = 0;i<10;i++){
+                    System.out.println("Thread 8: " + i);
+                };}
+        );
+        }catch(Exception e){   
+   
+        }finally {
+            if(service1 != null) service1.shutdown();
+            if(service2 != null) service2.shutdown();
+            if(service3 != null) service3.shutdown();
+            if(service4 != null) service4.shutdown();
+            if(service5 != null) service5.shutdown();
+            if(service6 != null) service6.shutdown();
+            if(service7 != null) service7.shutdown();
+            if(service8 != null) service8.shutdown();
+        }
+    }
+    
+}
+    
+    
+
