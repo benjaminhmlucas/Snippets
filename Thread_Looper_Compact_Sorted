@@ -10,21 +10,30 @@ import java.util.concurrent.TimeUnit;
  * @author lucasb
  */
 public class Thread_Looper {
-    
-    
+
+
 
     public static void main(String[] args) {
+        
         ArrayList<String> orderedList =  new ArrayList<>();
+        
+        int sleep = 10;
+        
+        int outerLoopMin = 1;
+        int outerLoopMax = 9;
+        int innerLoopMin = 0;
+        int innerLoopMax = 10;        
+
         try {     
-            for(int i = 1;i<9;i++){
+            for(int i = outerLoopMin;i<outerLoopMax;i++){
                 int x = i;
                 ExecutorService service = Executors.newSingleThreadExecutor();
-                        service.execute(() -> {for(int j = 0;j<10;j++){
+                        service.execute(() -> {for(int j = innerLoopMin;j<innerLoopMax;j++){
                         orderedList.add("Thread " + x + " : " + j);
                         service.shutdown();   
                         };}                        
                 );
-                TimeUnit.MILLISECONDS.sleep(100);
+                TimeUnit.MILLISECONDS.sleep(sleep);
             }            
             orderedList.sort((p1, p2) -> p1.compareTo(p2));
             for (int i = 1;i < orderedList.size();i++) {
@@ -34,5 +43,4 @@ public class Thread_Looper {
             System.out.println("Exception!");
         }
     }
-    
 }
