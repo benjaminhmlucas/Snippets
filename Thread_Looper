@@ -1,0 +1,52 @@
+package thread_looper;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+/**
+ *
+ * @author lucasb
+ */
+public class Thread_Looper {
+
+private static ExecutorService service1 = null;
+private static ExecutorService service2 = null;
+private static ExecutorService service3 = null;
+private static ExecutorService service4 = null;
+
+    public static void main(String[] args) {
+        try {
+        service1 = Executors.newSingleThreadExecutor();
+        service2 = Executors.newSingleThreadExecutor();
+        service3 = Executors.newSingleThreadExecutor();
+        service4 = Executors.newSingleThreadExecutor();
+        service1.execute(() -> {for(int i = 0;i<10;i++){
+                    System.out.println("Thread 1: " + i);
+                };}
+        );
+        service2.execute(() -> {for(int i = 0;i<10;i++){
+                    System.out.println("Thread 2: " + i);
+                };}
+        );
+        service3.execute(() -> {for(int i = 0;i<10;i++){
+                    System.out.println("Thread 3: " + i);
+                };}
+        );
+        service4.execute(() -> {for(int i = 0;i<10;i++){
+                    System.out.println("Thread 4: " + i);
+                };}
+        );
+        }catch(Exception e){   
+   
+        }finally {
+            if(service1 != null) service1.shutdown();
+            if(service2 != null) service2.shutdown();
+            if(service3 != null) service3.shutdown();
+            if(service4 != null) service4.shutdown();
+        }
+    }
+    
+}
+    
+    
+
