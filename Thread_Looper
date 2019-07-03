@@ -37,7 +37,7 @@ private static ExecutorService service4 = null;
                 };}
         );
         }catch(Exception e){   
-   
+            System.out.println("Exception!");
         }finally {
             if(service1 != null) service1.shutdown();
             if(service2 != null) service2.shutdown();
