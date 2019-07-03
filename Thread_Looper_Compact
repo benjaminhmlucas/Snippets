@@ -1,0 +1,30 @@
+package thread_looper;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+/**
+ *
+ * @author lucasb
+ */
+public class Thread_Looper {
+
+    public static void main(String[] args) {
+        try {     
+            for(int i = 0;i<8;i++){
+                int x = i;
+                ExecutorService service = Executors.newSingleThreadExecutor();
+                        service.execute(() -> {for(int j = 0;j<10;j++){
+                        System.out.println("Thread " + x + " : " + j);
+                        service.shutdown();                    };}
+                );
+            }
+        }catch(Exception e){   
+            System.out.println("Exception!");
+        }
+    }
+    
+}
+    
+    
+
