@@ -30,9 +30,10 @@ public class Thread_Looper {
             for(int i = outerLoopMin;i<outerLoopMax;i++){
                 int x = i;
                 ExecutorService service = Executors.newSingleThreadExecutor();
-                        Future<?> result = service.submit(() -> {for(int j = innerLoopMin;j<innerLoopMax;j++){
-                            orderedList.add("Thread " + x + " : " + j);
-                            service.shutdown();   
+                        Future<?> result = service.submit(() -> {
+                            for(int j = innerLoopMin;j<innerLoopMax;j++){
+                                orderedList.add("Thread " + x + " : " + j);
+                                service.shutdown();   
                         };                        
                     }                        
                 );
