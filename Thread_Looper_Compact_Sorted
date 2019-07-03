@@ -1,0 +1,38 @@
+package thread_looper;
+
+import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
+/**
+ *
+ * @author lucasb
+ */
+public class Thread_Looper {
+    
+    
+
+    public static void main(String[] args) {
+        ArrayList<String> orderedList =  new ArrayList<>();
+        try {     
+            for(int i = 1;i<9;i++){
+                int x = i;
+                ExecutorService service = Executors.newSingleThreadExecutor();
+                        service.execute(() -> {for(int j = 0;j<10;j++){
+                        orderedList.add("Thread " + x + " : " + j);
+                        service.shutdown();   
+                        };}                        
+                );
+                TimeUnit.MILLISECONDS.sleep(100);
+            }            
+            orderedList.sort((p1, p2) -> p1.compareTo(p2));
+            for (int i = 1;i < orderedList.size();i++) {
+                System.out.println(orderedList.get(i));
+            }
+        }catch(Exception e){   
+            System.out.println("Exception!");
+        }
+    }
+    
+}
